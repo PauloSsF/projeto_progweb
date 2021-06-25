@@ -1,80 +1,147 @@
-@import url('https://fonts.googleapis.com/css2?family=Titillium+Web:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@1,200&display=swap');
 
-*{ /*Resetando a pagina*/
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: "Titillium Web", sans-serif;
-}
-
-.center{ 
-    max-width: 1100px;
+table{
+    width: 700px;
     margin: 0 auto;
-    padding: 0 2%;
-    display: flex;
-    flex-wrap: wrap;
 }
 
-header{
-    background: linear-gradient(50deg, rgb(64, 33, 201),rgb(12, 4, 129));
-    padding:20px 0;
-    border-bottom: 2px solid rgb(12, 64, 95);
+table, td, th{
+    border: solid 1px #000;
 }
 
-.titulo{
-    color: rgb(230, 230, 235);
-    font-size: 15px;
-    font-weight: normal;
-    font-family: "Titillium Web", sans-serif;
-}
-
-.form{
-    padding: 100px;
-    margin-left: 500px;
-}
-
-footer{ /* modificação para o bloco da rodapé*/
-    background: linear-gradient(50deg, rgb(64, 33, 201),rgb(12, 4, 129));
-    position: absolute;
-    bottom: -20px;
-    width: 100%;
-    height: 50px;
-}
-
-.conteudo{
-    width: 100%;
+#div-form{
     text-align: center;
-    padding: 10px;
-    color: rgb(3, 3, 3)
-    
+}
+
+body{
+    background: linear-gradient(45deg, rgb(75, 116, 192), rgb(26, 24, 173));
+}
+
+form div {
+    margin: 20px;
 }
 
 form label{
-    text-align: center;
     display: block;
     font-weight: bold;
-    margin: 5px;
-    font-size: 15px;
-    color: rgb(3, 3, 3)
 }
 
-form div{
-    margin: 20px;
+header {
+	grid-area: header;
+}
+
+.menu {
+	grid-area: menu;
+}
+
+
+main {
+	grid-area: main;
+}
+
+footer {
+	grid-area: footer;
+}
+
+.container {
+    display: grid;
+    /* grid-template-columns: 30% 50% 20%; */
+    grid-template-rows: 10% 8% auto 10%;
+    grid-template-areas:
+        'header'
+        'menu'
+        'main'
+        'footer';
+    grid-gap: 10px;
+    height: 100%;
+    width: 98%;
+    margin: auto;
+}
+
+header, main, footer, .menu {
+    background: linear-gradient(45deg, rgb(214, 215, 218), rgb(192, 192, 224));
     text-align: center;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-direction: column;
+    border-radius: 5px;
+    font-family: "Poppins";
 }
 
-form input{
-    width: 35%;
+input, textarea, select{
+    width: 400px;
+    height: 35px;
+    border-radius: 5px;
+    font-family: "Poppins";
 }
 
-form button{
-    margin-top: 20px;
-    font-size: 15px;
+textarea{
+    height: 150px;
+    font-family: "Poppins";
 }
 
-#rodape{ /* id para modificação do que esta escrito no rodapé*/
-    font-family: "Titillium Web", sans-serif;
-    color: rgb(238, 234, 234);
-    margin-left: 5%;
-    margin-top: 1%;
+button{
+    width: 100px;
+    height: 30px;
+    border-radius: 5px;
+    background: linear-gradient(45deg, rgb(82, 109, 160), rgb(68, 97, 194));
+    font-family: "Poppins";
+}
+
+button:hover{
+    background-color: rgb(9, 1, 51);
+    cursor: pointer;
+    transition: all 0.8s;
+}
+
+ul {
+    list-style: none;
+    display: flex;
+}
+
+ul li{
+    margin: 5px;
+    padding: 10px;
+    border-radius: 8px;
+    background-color: rgb(68, 97, 194);
+}
+
+ul li:hover{
+    background-color: rgb(162, 158, 182);
+    cursor: pointer;
+    transition: all 0.8s;
+}
+
+a{
+    text-decoration: none;
+    color: #000;
+}
+
+#btn-limpar-sessao{
+    margin: 30px auto;
+    background: linear-gradient(45deg, rgb(82, 109, 160), rgb(68, 97, 194));
+    border-radius: 8px;
+    font-family: "Poppins";
+    width: 100px;
+    display: table;
+    height: 35px;
+}
+
+img{
+    width: 250px;
+    padding-left: 600px;
+}
+
+#btn-limpar-sessao a{
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.msg_cad_cont{
+    border: 1px solid rgb(7, 50, 129);
+    font-family: "Poppins";
+    color:rgb(25, 68, 209);
+    margin: 10px, auto;
+    padding: 5px;
 }

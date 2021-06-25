@@ -1,50 +1,74 @@
+<?php
+
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
+session_start();
+
+require("bd/conexao.php");
+
+?>
+
 <html>
-<head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="css/style.css">
-    <title>Site</title>
-</head>
-</html>
 
-<body>
+    <head>
+        <meta charset="UTF-8">
+        <title>Site</title>
 
-    <header>
-        <div class="center">
-            <div class="titulo">
-                <h1><strong>Formulário de Contato</strong></h1>
+        <link rel="stylesheet" type="text/css" href="css/style.css" />
+    </head>
+
+    <body>
+
+        <div class="container">
+
+            <header>
+                <h1>Meu site</h1>
+            </header>
+
+            <div class="menu">
+                <ul>
+                    <a href="?pg=inicio"><li>Início</li></a>
+                    <a href="?pg=sobre"><li>Sobre</li></a>
+                    <a href="?pg=contato/formulario"><li>Contato</li></a>
+                    <?php 
+                        if(!isset($_SESSION["nome"])){
+                    ?>
+                        <a href="?pg=login/formulario"><li>Login</li></a>
+                    <?php
+                        }
+                        else{
+                    ?>
+                        <a href="?pg=area_restrita"><li>Área restrita</li></a>
+                    <?php
+                        }
+                    ?>
+                </ul>
             </div>
+
+            <main>
+            
+                <?php
+
+                    /* Operador ternário para verificar se o pg está setado no GET e não está vazio
+                        Caso verdadeiro: usa o valor do GET["pg"]
+                        Caso falso: usa o valor "inicio"
+                    */
+                    $pg = (isset($_GET["pg"]) && !empty($_GET["pg"])) ? $_GET["pg"] : "inicio";
+
+                    include("paginas/".$pg.".php");
+
+                ?>
+
+            </main>
+
+            <footer>
+                <h4>Copyright &copy; 2021</h4>
+            </footer>
+
         </div>
-    </header>
+
+    </body>
     
-    <main>
-        <div class="conteudo">
-            <div id = "cadts">
-                <h2>Contato</h2>
-                    <form method="POST" action="processar.php">
-                        <div>
-                            <label>Nome</label>
-                            <input id="nome" type="text" name="nome" />
-                        </div>
-                        <div>
-                            <label>E-mail</label>
-                            <input id="email" type="email" name="email" />
-                        </div>
-                        <div>
-                            <label>Telefone</label>
-                            <input id="telefone" type="text" name="telefone" />
-                        </div>
-                        <div>
-                            <label>Mensagem</label>
-                            <textarea name="mensagem" placeholder="Digite a mensagem..."></textarea>
-                        </div>
-                        <button  class= "botaoform" onclick="capturar()">Enviar</button>
-                    </form>
-            </div>
-        </div>    
-    <main>
-
-    <footer>
-    <p id="rodape"><strong>Copyright</strong></p>
-    </footer>
-
-</body>
+</html>
